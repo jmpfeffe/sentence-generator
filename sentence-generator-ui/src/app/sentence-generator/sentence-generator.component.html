@@ -34,7 +34,9 @@
             <ng-template #disabledBtn><button mat-raised-button disabled>Generate sentence!</button></ng-template>
         </div>
         <div class="col-9">
-            Test 2
+            <h2>Your Sentence:</h2>
+            <h3>{{ curSentence }}</h3>
+            <mat-spinner *ngIf="isLoading"></mat-spinner>
         </div>
     </div>
 </div>

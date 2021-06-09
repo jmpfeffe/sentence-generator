@@ -12,11 +12,9 @@ export class GeneratorService {
     private http: HttpClient
   ) { }
 
-  generateSentence() {
+  generateSentence(values) {
     return this.http.get(this.genSentenceUrl, {
-      params: {
-
-      }
+      params: values
     });
   }
 }

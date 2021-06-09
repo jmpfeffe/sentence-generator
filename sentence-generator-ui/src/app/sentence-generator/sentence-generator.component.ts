@@ -29,10 +29,12 @@ export class SentenceGeneratorComponent implements OnInit {
       value: 'present',
       required: false
     }
-  }
+  };
+  curSentence;
+  isLoading = false;
 
   constructor(
-    public generatorService: GeneratorService
+    private generatorService: GeneratorService
   ) { }
 
   ngOnInit(): void {
@@ -52,8 +54,37 @@ export class SentenceGeneratorComponent implements OnInit {
     this.values[field].value = value;
   }
 
+  formQueryMap() {
+    const queryParams = {};
+
+    Object.entries(this.values).forEach(([field, val]) => {
+      const curVal = val.value.trim();
+
+      if (curVal) {
+        queryParams[field] = curVal;
+      }
+    });
+
+    return queryParams;
+  }
+
   genSentence() {
-    console.log('Generating sentence!')
+    const queryParams = this.formQueryMap();
+    this.isLoading = true;
+    this.curSentence = '';
+
+    this.generatorService.generateSentence(queryParams)
+      .subscribe(res => {
+        if (res['result'] === 'OK' && res['sentence']) {
+          this.curSentence = res['sentence'];
+        }
+
+        this.isLoading = false;
+      },
+      err => {
+        console.error(err);
+        this.isLoading = false;
+      });
   }
 
 }
