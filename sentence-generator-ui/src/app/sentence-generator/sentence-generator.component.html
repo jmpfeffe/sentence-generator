@@ -35,6 +35,7 @@
                   <mat-option value="future">future</mat-option>
                 </mat-select>
             </mat-form-field>
+            <mat-checkbox (change)="onDropdownSelection($event.checked, 'negated')" [checked]="values.negated.value" color="primary" style="margin-bottom: 20px;">Negated?</mat-checkbox>
             <button *ngIf="validForm(); else disabledBtn" mat-raised-button color="primary" (click)="genSentence()">Generate sentence!</button>
             <ng-template #disabledBtn><button mat-raised-button disabled>Generate sentence!</button></ng-template>
         </div>

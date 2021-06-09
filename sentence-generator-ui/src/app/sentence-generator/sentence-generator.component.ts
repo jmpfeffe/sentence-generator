@@ -28,6 +28,10 @@ export class SentenceGeneratorComponent implements OnInit {
     tense: {
       value: 'present',
       required: false
+    },
+    negated: {
+      value: false,
+      required: false
     }
   };
   curSentence;
@@ -42,6 +46,10 @@ export class SentenceGeneratorComponent implements OnInit {
 
   validForm(): boolean {
     for (let val of Object.values(this.values)) {
+      if (typeof val.value !== 'string') {
+        continue;
+      }
+
       if (val.required && !val.value.trim()) {
         return false;
       }
@@ -58,10 +66,21 @@ export class SentenceGeneratorComponent implements OnInit {
     const queryParams = {};
 
     Object.entries(this.values).forEach(([field, val]) => {
-      const curVal = val.value.trim();
+      let curVal;
+      
+      if (typeof val.value === 'string') {
+        curVal = val.value.trim();
 
-      if (curVal) {
-        queryParams[field] = curVal;
+        if (curVal) {
+          queryParams[field] = curVal;
+        }
+      }
+      else {
+        curVal = val.value;
+
+        if (curVal) {
+          queryParams[field] = field;
+        }
       }
     });
 
