@@ -1,0 +1,40 @@
+<div class="container">
+    <h1 class="instr">Welcome to Sentence Generator! If you're learning the English language, you've come to the right place. Simply select or enter values below (some are mandatory, while others are optional) to generate some awesome sentences. Have fun!</h1>
+    <div class="row">
+        <div class="col-3 options-col">
+            <mat-form-field appearance="fill">
+                <mat-label>Sentence Type</mat-label>
+                <mat-select (selectionChange)="onDropdownSelection($event.value, 'sentencetype')">
+                  <mat-option value="yesno">yesno</mat-option>
+                  <mat-option value="whatobj">whatobj</mat-option>
+                  <mat-option value="whosubj">whosubj</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Subject</mat-label>
+                <input matInput placeholder="any noun, any pronoun" required [(ngModel)]='values.subject.value'>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Verb</mat-label>
+                <input matInput placeholder="any verb, including phrasal verbs like 'start out'" required [(ngModel)]='values.verb.value'>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Object</mat-label>
+                <input matInput placeholder="any noun or pronoun" required [(ngModel)]='values.object.value'>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Verb Tense</mat-label>
+                <mat-select [(value)]="values.tense.value" (selectionChange)="onDropdownSelection($event.value, 'tense')">
+                  <mat-option value="present">present</mat-option>
+                  <mat-option value="past">past</mat-option>
+                  <mat-option value="future">future</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button *ngIf="validForm(); else disabledBtn" mat-raised-button color="primary" (click)="genSentence()">Generate sentence!</button>
+            <ng-template #disabledBtn><button mat-raised-button disabled>Generate sentence!</button></ng-template>
+        </div>
+        <div class="col-9">
+            Test 2
+        </div>
+    </div>
+</div>
