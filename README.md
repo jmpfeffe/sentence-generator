@@ -11,6 +11,8 @@ npm run build --prefix ./sentence-generator-ui
 npm run start --prefix ./sentence-generator-server
 ```
 
+Then, navigate to ```http://localhost:8080/```.
+
 ## Frontend Architecture
 
 The client-side web application is developed using Angular 11. There are 2 custom components: ```SentenceGeneratorComponent``` & ```HeaderComponent```. I've created a single service, ```GeneratorService```, which uses Angular's ```HttpClient``` to make *GET* requests to the *Linguatools* API. A single interface, ```GeneratorValues```, is used to define the properties of the sentence form.
