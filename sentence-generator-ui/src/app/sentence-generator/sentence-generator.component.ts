@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GeneratorValues } from '../data/generator-values';
 import { GeneratorService } from '../services/generator.service';
 
 @Component({
@@ -8,33 +9,8 @@ import { GeneratorService } from '../services/generator.service';
 })
 export class SentenceGeneratorComponent implements OnInit {
 
-  values = {
-    sentencetype: {
-      value: '',
-      required: false
-    },
-    subject: {
-      value: '',
-      required: true
-    },
-    verb: {
-      value: '',
-      required: true
-    },
-    object: {
-      value: '',
-      required: true
-    },
-    tense: {
-      value: 'present',
-      required: false
-    },
-    negated: {
-      value: false,
-      required: false
-    }
-  };
-  curSentence;
+  values: GeneratorValues;
+  curSentence: string;
   isLoading = false;
 
   constructor(
@@ -42,6 +18,40 @@ export class SentenceGeneratorComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() {
+    this.values = {
+      sentencetype: {
+        value: '',
+        required: false
+      },
+      subject: {
+        value: '',
+        required: true
+      },
+      verb: {
+        value: '',
+        required: true
+      },
+      object: {
+        value: '',
+        required: true
+      },
+      tense: {
+        value: 'present',
+        required: false
+      },
+      negated: {
+        value: false,
+        required: false
+      }
+    };
+  }
+
+  reset(): void {
+    this.initForm();
   }
 
   validForm(): boolean {

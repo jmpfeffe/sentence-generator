@@ -9,7 +9,7 @@
         <div class="col-xl-3 order-xl-first options-col">
             <mat-form-field appearance="fill">
                 <mat-label>Sentence Type</mat-label>
-                <mat-select (selectionChange)="onDropdownSelection($event.value, 'sentencetype')">
+                <mat-select [(value)]="values.sentencetype.value" (selectionChange)="onDropdownSelection($event.value, 'sentencetype')">
                   <mat-option value="yesno">yesno</mat-option>
                   <mat-option value="whatobj">whatobj</mat-option>
                   <mat-option value="whosubj">whosubj</mat-option>
@@ -38,6 +38,7 @@
             <mat-checkbox (change)="onDropdownSelection($event.checked, 'negated')" [checked]="values.negated.value" color="primary" style="margin-bottom: 20px;">Negated?</mat-checkbox>
             <button *ngIf="validForm(); else disabledBtn" mat-raised-button color="primary" (click)="genSentence()">Generate sentence!</button>
             <ng-template #disabledBtn><button mat-raised-button disabled>Generate sentence!</button></ng-template>
+            <button mat-raised-button color="basic" (click)="reset()" style="margin-top: 20px;">Reset</button>
         </div>
     </div>
 </div>
