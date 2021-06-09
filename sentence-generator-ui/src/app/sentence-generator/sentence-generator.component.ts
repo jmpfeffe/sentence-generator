@@ -52,6 +52,7 @@ export class SentenceGeneratorComponent implements OnInit {
 
   reset(): void {
     this.initForm();
+    this.curSentence = '';
   }
 
   validForm(): boolean {
