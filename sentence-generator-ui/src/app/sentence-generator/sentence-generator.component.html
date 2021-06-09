@@ -1,7 +1,12 @@
 <div class="container">
     <h1 class="instr">Welcome to Sentence Generator! If you're learning the English language, you've come to the right place. Simply select or enter values below (some are mandatory, while others are optional) to generate some awesome sentences. Have fun!</h1>
     <div class="row">
-        <div class="col-3 options-col">
+        <div class="col-xl-9 order-xl-last sentence-padding">
+            <h2>Your Sentence:</h2>
+            <h3>{{ curSentence }}</h3>
+            <mat-spinner *ngIf="isLoading"></mat-spinner>
+        </div>
+        <div class="col-xl-3 order-xl-first options-col">
             <mat-form-field appearance="fill">
                 <mat-label>Sentence Type</mat-label>
                 <mat-select (selectionChange)="onDropdownSelection($event.value, 'sentencetype')">
@@ -32,11 +37,6 @@
             </mat-form-field>
             <button *ngIf="validForm(); else disabledBtn" mat-raised-button color="primary" (click)="genSentence()">Generate sentence!</button>
             <ng-template #disabledBtn><button mat-raised-button disabled>Generate sentence!</button></ng-template>
-        </div>
-        <div class="col-9">
-            <h2>Your Sentence:</h2>
-            <h3>{{ curSentence }}</h3>
-            <mat-spinner *ngIf="isLoading"></mat-spinner>
         </div>
     </div>
 </div>

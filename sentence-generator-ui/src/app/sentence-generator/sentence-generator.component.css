@@ -11,3 +11,9 @@
 mat-form-field {
     width: 100%;
 }
+
+@media (max-width: 1200px) {
+    .sentence-padding {
+        padding-bottom: 40px;
+    }
+}
