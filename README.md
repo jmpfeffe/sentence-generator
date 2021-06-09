@@ -17,7 +17,7 @@ Then, navigate to ```http://localhost:8080/```.
 
 The client-side web application is developed using Angular 11. There are 2 custom components: ```SentenceGeneratorComponent``` & ```HeaderComponent```. I've created a single service, ```GeneratorService```, which uses Angular's ```HttpClient``` to make *GET* requests to the *Linguatools* API. A single interface, ```GeneratorValues```, is used to define the properties of the sentence form.
 
-UI components are built using [Angular Material](https://material.angular.io/).
+UI components are built using [Angular Material](https://material.angular.io/) & [Bootstrap v5.0](https://getbootstrap.com/).
 
 ## Backend Architecture
 
